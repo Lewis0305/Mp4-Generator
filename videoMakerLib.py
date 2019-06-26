@@ -51,14 +51,15 @@ def final_concatenation(clips,ind):
     num = 1
     for n in clips:
         names += '-i workspace/Done_mp4/' + str(num) + '.mp4 '
-        names += '-i workspace/blank_slate/New.mp4 '
-        clip += '[' + str(total) + ':v:0][' + str(total) + ':a:0]'
+        names += '-i workspace/blank_slate/New.mov '
+        clip += '[' + str(total) + ':v:0]scale=1920:1080[' + str(total) + ':a:0]'
         clip += '[' + str(total+1) + ':v:0][' + str(total+1) + ':a:0]'
         total += 2
         num += 1
     os.system('ffmpeg ' + names + ' \
               -filter_complex "' + clip + 'concat=n=' + str(total) + ':v=1:a=1[outv][outa]" \
               -map "[outv]" -map "[outa]" workspace/video/' + str(ind+1) + '.mp4')
+
 
 """
 def final_concatenation(clips,ind):
