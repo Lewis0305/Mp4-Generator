@@ -48,12 +48,14 @@ def final_concatenation(clips,ind):
     names = '' # Names of all input mp4
     clip = '' # Video and audio streams
     total = 0  # Total number of clips
+    num = 1
     for n in clips:
-        names += '-i workspace/Done_mp4/' + str(total + 1) + '.mp4 '
+        names += '-i workspace/Done_mp4/' + str(num) + '.mp4 '
         names += '-i workspace/blank_slate/New.mp4 '
         clip += '[' + str(total) + ':v:0][' + str(total) + ':a:0]'
         clip += '[' + str(total+1) + ':v:0][' + str(total+1) + ':a:0]'
         total += 2
+        num += 1
     os.system('ffmpeg ' + names + ' \
               -filter_complex "' + clip + 'concat=n=' + str(total) + ':v=1:a=1[outv][outa]" \
               -map "[outv]" -map "[outa]" workspace/video/' + str(ind+1) + '.mp4')
