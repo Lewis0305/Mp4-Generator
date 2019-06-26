@@ -1,4 +1,5 @@
-import moviepy.editor as mpe
+from moviepy.editor import VideoFileClip, concatenate_videoclips
+import moviepy.editor
 import ffmpeg
 import os
 
