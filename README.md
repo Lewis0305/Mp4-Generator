@@ -1,6 +1,8 @@
 # Mp4-Generator
 
-Audio only works with programs on my computer so the Simple branch removes it
+*****************************************************************************************************************
+Going to try to make the transition a .mov instead of the slightly different .mp4 it is now
+*****************************************************************************************************************
 
 Thinking about taking out tesseract OCR to fix frequent mistakes with one letter words i.e. I was -> Iwas This could also be fixed by image size issue I talk about later.
 
