@@ -2,9 +2,11 @@
 
 *****************************************************************************************************************
                                               Audio is working now
-New Error: Files are being created 1980:1080 instead of 1920:1080 // No clue (going to watch the chain)
+New Error: Files are being created 1980:1080 instead of 1920:1080 
+          // No clue (going to watch the chain)
 Error: Small files are very blurry
-Error: RGB values for background are a little different // Might grab values from lower right of images (maybe)
+Error: RGB values for background are a little different 
+          // Might grab values from lower right of images (maybe)
 Error: Rare audio blip at the end of a speaking clip
 *****************************************************************************************************************
 
