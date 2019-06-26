@@ -1,5 +1,7 @@
 # Mp4-Generator
 
+Audio only works with programs on my computer so the Simple branch removes it
+
 Thinking about taking out tesseract OCR to fix frequent mistakes with one letter words
 i.e. I was -> Iwas
 This could also be fixed by image size issue I talk about later.
@@ -23,3 +25,5 @@ Then I will need to polish the video as much as I can.
 
 Then checkout Youtube API so it can post.
 I will also need to make an account of course.
+
+Also files and frames are being saved to directories so I can watch it work for debugging.
