@@ -28,7 +28,6 @@ def mp4_plus_wav(ind):
 
 
 # Stitch all of these states into a temp mp4
-# THIS IS NOW PROVEN TO BE WHERE THE AUDIO GLICH IS FROM
 def mp4_concatenation(clips, ind): # directory
     vids = ""
     n=1
@@ -45,18 +44,16 @@ def mp4_concatenation(clips, ind): # directory
 
 # stitch all mp4's togehter
 def final_concatenation(clips,ind):
-    vids = ""
-    n=1
-    #os.system('ffmpeg -i blank_slate/sta2.mp4 blank_slate/sta.mp4 -hide_banner')
-    os.system('ffmpeg -i workspace/blank_slate/New.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts workspace/inter/0.ts')
-    for i in clips:
-        os.system('ffmpeg -i workspace/Done_mp4/'+str(n)+'.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts workspace/inter/'+str(n)+'.ts')
-        if n > 1:
-            #vids += "|"
-            vids += "|workspace/inter/0.ts|"
-        vids += "workspace/inter/"+str(n)+'.ts'
-        n += 1
-    print(vids)
-    os.system('ffmpeg -i "concat:'+vids+'" -c copy -bsf:a aac_adtstoasc workspace/video/'+str(ind+1)+'.mp4')
-    for i in range(len(clips)):
-        os.remove(r'C:/Desk/Mp4Gen/workspace/Done_mp4' + '/' + str(i+1) + '.mp4')
+    num = 1
+    videos = []
+    for n in clips:
+        temp_clip = VideoFileClip("workspace/Done_mp4/" + str(num) + ".mp4")
+        if(num%2==0):
+            temp_tran = VideoFileClip("workspace/blank_slate/New.mp4")
+        else:
+            temp_tran = VideoFileClip("workspace/blank_slate/sta2.mp4")
+        videos.append(temp_clip)
+        videos.append(temp_tran)
+        num += 1
+    final_clip = concatenate_videoclips(videos)
+    final_clip.write_videofile("workspace/video/" + str(ind+1) + ".mp4")
