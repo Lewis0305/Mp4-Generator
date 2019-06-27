@@ -166,6 +166,8 @@ def delete_temp_frames(length):
     
 # Make temp png frame
 def make_temp(length, tempim2):
+    if (length>200):
+        length-10
     for i in range(length):
         tempim2.save('workspace/frames_temp/' + zeros(i+1) + str(i+1) + '.png')
 

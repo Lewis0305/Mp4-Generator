@@ -1,6 +1,7 @@
 from moviepy.editor import VideoFileClip, concatenate_videoclips
 import moviepy.editor
 import ffmpeg
+import time
 import os
 
 
@@ -58,3 +59,6 @@ def final_concatenation(clips,ind):
         num += 1
     final_clip = concatenate_videoclips(videos)
     final_clip.write_videofile("workspace/video/" + str(ind+1) + ".mp4")
+    time.sleep(3)
+    for i in range(len(clips)):
+        os.remove(r'C:/Desk/Mp4Gen/workspace/Done_mp4' + '/' + str(i+1) + '.mp4') 
