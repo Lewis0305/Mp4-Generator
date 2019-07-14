@@ -155,7 +155,7 @@ def zeros(index_name):
 # Delete frames of image state
 def delete_state_frames(length):
     for i in range(length):
-        os.remove(r'C:/Desk/Mp4Gen/workspace/frames' + '/' + 'testImage' + zeros(length) + str(i+1) + '.png')
+        os.remove(r'C:/Desk/Mp4Gen/workspace/frames' + '/' + 'testImage' + zeros(i+1) + str(i+1) + '.png')
 
 
 # Delete temp frames

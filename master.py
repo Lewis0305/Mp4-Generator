@@ -2,6 +2,8 @@ import frameMakerLib as frame
 import audioMakerLib as audio
 import videoMakerLib as video
 import MakerLib as make
+import time
+import os
 
 lis = frame.read_direct('workspace/png','.PNG')
 audio.check_ball()
