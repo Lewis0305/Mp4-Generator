@@ -140,30 +140,6 @@ def paint_frame(A, points, data, image_name):
     main_image.save('workspace/frames/'  + 'testImage' + zeros(index_name) + str(index_name) + '.png')
 
 
-# Return the number of zeros that it needs
-def zeros(index_name):
-    if len(str(index_name)) == 1:
-        return '000'
-    elif len(str(index_name)) == 2:
-        return '00'
-    elif len(str(index_name)) == 3:
-        return '0'
-    elif len(str(index_name)) == 4:
-        return ''
-
-
-# Delete frames of image state
-def delete_state_frames(length):
-    for i in range(length):
-        os.remove(r'C:/Desk/Mp4Gen/workspace/frames' + '/' + 'testImage' + zeros(i+1) + str(i+1) + '.png')
-
-
-# Delete temp frames
-def delete_temp_frames(length):
-    for i in range(length):
-        os.remove(r'C:/Desk/Mp4Gen/workspace/frames_temp' + '/' + zeros(i+1) + str(i+1) + '.png')
-
-    
 # Make temp png frame
 def make_temp(length, tempim2):
     if (length>200):
@@ -194,13 +170,3 @@ def image_format_1080(image, npArr):
     return end
 
 
-# Insert formatted image into the 1080p image correctly
-def insert_image(end,image):
-    x_temp,y_temp = end.size
-    ten80 = Image.open('workspace/blank_slate/1080grey.jpg')
-    tempim = ten80.copy()
-    if(y_temp==1080):
-        tempim.paste(end, (int((1920-x_temp)/2),0))
-    elif(x_temp==1920):
-        tempim.paste(end, (0,int((1080-y_temp)/2)))
-    tempim.save(image.filename)
