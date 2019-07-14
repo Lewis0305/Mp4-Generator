@@ -1,7 +1,8 @@
 # Mp4-Generator
 
-The Simple branch is able to work without my extra programs.
-That is where I am figuring out the audio issue
+The Stream branch is the streamlined version.
+The old method was heavy in cs and did not allow for human variace.
+Now I will do a the work but with the help of these tools cutting my work time in half.
 
                                                         Audio fixed
 

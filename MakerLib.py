@@ -1,6 +1,5 @@
 from PIL import Image
 import frameMakerLib as frame
-import audioMakerLib as audio
 import videoMakerLib as video
 import numpy as np
 import time
@@ -22,9 +21,6 @@ def make_vid_clip(image_name, clip):
     words = re.split('[,.?!]', text) # Split text into sentences
     del words[-1]
 
-    words = audio.page_text_clean(words) # Clean the sentences of newlines
-    audio.make_audio(words)
-    durations = audio.find_durations(words)
     direc = frame.read_direct('workspace/frames', '.png')
     index = 1
     for dire in direc:
@@ -46,6 +42,5 @@ def make_vid_clip(image_name, clip):
     mp = frame.read_direct('workspace/mp4', '.mp4')
     video.mp4_concatenation(mp,clip)
 
-    audio.delete_audio(len(words))
     frame.delete_state_frames(len(points))
     video.delete_temp_mp4s(len(points))
