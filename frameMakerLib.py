@@ -5,7 +5,7 @@ import pyautogui as gu
 import argparse
 import cv2 as cv
 import os
-
+ ## Mega changes test
 
 # Reads the contents of the directory specified as string
 # directory equals None will read current
