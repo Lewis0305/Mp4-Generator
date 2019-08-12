@@ -40,11 +40,18 @@ for title in images:
                 prev_wht = current_wht
 
 
-
+################################ Paint ################################
         for dot in red_dots:
                 for n in range(3):
                         for j in range(4):
                                 image.putpixel((dot[0]+n-2,dot[1]+j-2), (26 ,26 ,27))
+
+
+
+
+
+                                
+
 
         image.save('C:\\Users\\Sam\\Box Sync\\V\\Out\\'+str(dirc)+'\\'+str(i)+'.png')
 
