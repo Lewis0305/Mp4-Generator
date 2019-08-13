@@ -1,7 +1,6 @@
 import os
 
-#dirc = input('Enter video:   ')
-dirc = 'test'
+dirc = input('Enter video:   ')
 folder = 'C:\\Users\\Sam\\Box Sync\\V\\Out\\'+str(dirc)
 items = os.listdir(folder)
 images = []
@@ -16,8 +15,6 @@ import numpy as np
 print(images)
 i = 1
 for title in images:
-
-
 ## Creates list of the bottom of text blocks in all images but title ##
         image = Image.open(folder+'\\'+str(title))
         image_array = np.asarray(image)
@@ -54,7 +51,7 @@ for title in images:
                 if [dot[0]-1, dot[1]-1] not in red_dots and \
                    [dot[0], dot[1]-1] not in red_dots and \
                    [dot[0]+1, dot[1]-1] not in red_dots:
-                        temp = image
+                        temp = Image.open(folder+'\\'+str(i+1)+'-0.png')
                         floor = 0
                         for bot in wht_bttms:
                                 if dot[1] < bot:
@@ -65,10 +62,9 @@ for title in images:
                         
                         
                         y_paint = 0
-                        print(floor)
                         for y in image_array:
                                 x_paint = 0
-                                for xy in image_array:
+                                for xy in y:
                                         if y_paint > floor+3:
                                                 temp.putpixel((x_paint,y_paint), (26 ,26 ,27))
                                         if y_paint > dot[1] and x_paint > dot[0]:
@@ -77,15 +73,4 @@ for title in images:
                                 y_paint += 1
                         temp.save('C:\\Users\\Sam\\Box Sync\\V\\Out\\'+str(dirc)+'\\'+str(i+1)+'-'+str(name)+'.png')
                         name += 1
-        
-
-
-
-        
-
-
-        #image.save('C:\\Users\\Sam\\Box Sync\\V\\Out\\'+str(dirc)+'\\'+str(i)+'-1.png')
-
-
-
         i += 1
