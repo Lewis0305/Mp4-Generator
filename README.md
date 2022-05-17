@@ -1,9 +1,4 @@
 # Mp4-Generator
 
-The Simple branch is able to work without my extra programs.
-That is where I am figuring out the audio issue
+#### Automated Video Editor that takes in png files containing text and produces a mp4 video with TTS audio and text revealed as spoken.
 
-                        Audio fixed
-
-                                                     Formatting fixed
-*****************************
