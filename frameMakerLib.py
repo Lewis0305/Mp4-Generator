@@ -142,20 +142,14 @@ def paint_frame(A, points, data, image_name):
 
 # Return the number of zeros that it needs
 def zeros(index_name):
-    if len(str(index_name)) == 1:
-        return '000'
-    elif len(str(index_name)) == 2:
-        return '00'
-    elif len(str(index_name)) == 3:
-        return '0'
-    elif len(str(index_name)) == 4:
-        return ''
+    str_len = len(str(index_name))
+    return '0' * (4 - str_len)
 
 
 # Delete frames of image state
 def delete_state_frames(length):
     for i in range(length):
-        os.remove(r'C:/Desk/Mp4Gen/workspace/frames' + '/' + 'testImage' + zeros(length) + str(i+1) + '.png')
+        os.remove(r'C:/Desk/Mp4Gen/workspace/frames' + '/' + 'testImage' + zeros(i+1) + str(i+1) + '.png')
 
 
 # Delete temp frames
@@ -173,34 +167,30 @@ def make_temp(length, tempim2):
 
 
 # Format image to 1080p ready
-def image_format_1080(image, npArr):
-    y,x,_ = npArr.shape
+def image_format_1080(image, np_arr):
+    y, x, _ = np_arr.shape
     y_test = round((x/16)*9)
-    if( y_test > y):
+
+    if y_test > y:
         x_temp = x+(1920-x)
-        y_temp = round(y+  (((1920-x)/16)*9)  )
-        end = image.resize((x_temp, y_temp))
-        #end.save('end.png')
-    elif( y_test < y):
+        y_temp = round(y + (((1920-x)/16)*9) )
+        return image.resize((x_temp, y_temp))
+
+    elif y_test < y:
         y_temp = y+(1080-y)
-        x_temp = round(x+  (((1080-y)/16)*9)  )
-        end = image.resize((x_temp, y_temp))
-        #end.save('end.png')
-    else:
-        x_temp = 1920
-        y_temp = 1080
-        end = image.resize((x+ (1920-x), y+ (1080-y)))
-        #end.save('end.png')
-    return end
+        x_temp = round(x + (((1080-y)/16)*9) )
+        return image.resize((x_temp, y_temp))
+
+    return image.resize((x+ (1920-x), y + (1080-y)))
 
 
 # Insert formatted image into the 1080p image correctly
-def insert_image(end,image):
-    x_temp,y_temp = end.size
+def insert_image(end, image):
+    x_temp, y_temp = end.size
     ten80 = Image.open('workspace/testing_space/1080grey.jpg')
-    tempim = ten80.copy()
-    if(y_temp==1080):
-        tempim.paste(end, (int((1920-x_temp)/2),0))
-    elif(x_temp==1920):
-        tempim.paste(end, (0,int((1080-y_temp)/2)))
-    tempim.save(image.filename)
+    temp_img = ten80.copy()
+    if y_temp == 1080:
+        temp_img.paste(end, (int((1920-x_temp)/2), 0))
+    elif x_temp == 1920:
+        temp_img.paste(end, (0, int((1080-y_temp)/2)))
+    temp_img.save(image.filename)
