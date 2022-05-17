@@ -8,8 +8,8 @@ import os
 # Checks to make sure the audio program is open
 def check_ball():
     while True:
-        find2 = gu.locateOnScreen('workspace/blank_slate/Ball_head.PNG')
-        find = gu.locateOnScreen('workspace/blank_slate/Arrow.PNG')
+        find2 = gu.locateOnScreen('workspace/testing_space/Ball_head.PNG')
+        find = gu.locateOnScreen('workspace/testing_space/Arrow.PNG')
         if find !=None and find2 != None:
             break
     # Opens window

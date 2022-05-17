@@ -197,7 +197,7 @@ def image_format_1080(image, npArr):
 # Insert formatted image into the 1080p image correctly
 def insert_image(end,image):
     x_temp,y_temp = end.size
-    ten80 = Image.open('workspace/blank_slate/1080grey.jpg')
+    ten80 = Image.open('workspace/testing_space/1080grey.jpg')
     tempim = ten80.copy()
     if(y_temp==1080):
         tempim.paste(end, (int((1920-x_temp)/2),0))

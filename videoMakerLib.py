@@ -39,7 +39,7 @@ def mp4_concatenation(clips, ind): # directory
             vids += "|"
         vids += "workspace/inter/"+str(n)+'.ts'
         n += 1
-    #os.system('ffmpeg -i blank_slate/sta.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts inter/0.ts')
+    #os.system('ffmpeg -i testing_space/sta.mp4 -c copy -bsf:v h264_mp4toannexb -f mpegts inter/0.ts')
     #vids += "|inter/0.ts"
     os.system('ffmpeg -i "concat:'+vids+'" -c copy -bsf:a aac_adtstoasc workspace/Done_mp4/'+str(ind)+'.mp4')
 
@@ -51,9 +51,9 @@ def final_concatenation(clips,ind):
     for n in clips:
         temp_clip = VideoFileClip("workspace/Done_mp4/" + str(num) + ".mp4")
         if(num%2==0):
-            temp_tran = VideoFileClip("workspace/blank_slate/New.mp4")
+            temp_tran = VideoFileClip("workspace/testing_space/New.mp4")
         else:
-            temp_tran = VideoFileClip("workspace/blank_slate/sta2.mp4")
+            temp_tran = VideoFileClip("workspace/testing_space/sta2.mp4")
         videos.append(temp_clip)
         videos.append(temp_tran)
         num += 1
