@@ -7,15 +7,14 @@ import time
 import re
 
 # string for name, int of clip
-# i.e. name = 
 def make_vid_clip(image_name, clip):
     # [ start, listBlack, listWhite ]
     photo_read_data = [0, [[0]], []]
     image = Image.open(image_name)
     read = Image.open(image_name)
     A = np.asarray(image)
-    frame.white_black_INFO(A,photo_read_data) # Find writing
-    frame.make_read(A, read, photo_read_data) # Make blank writing for OCR
+    frame.white_black_INFO(A, photo_read_data)  # Find writing
+    frame.make_read(A, read, photo_read_data)  # Make blank writing for OCR
     text = frame.read_photo() # Read file
     points = frame.punc_mark(photo_read_data[2]) # Look for sentences
     frame.paint_frame(A, points, photo_read_data, image_name) # Make and save all frames
@@ -29,14 +28,11 @@ def make_vid_clip(image_name, clip):
     index = 1
     for dire in direc:
         frames = durations[index-1]
-        print(frames)
-        print(frames/30)
-        print(dire)
         tempim = Image.open('workspace/frames/' + dire) # open image
         # re-format frames into 16:9 1080p
-        frame.insert_image(frame.image_format_1080(tempim,A),tempim)
+        frame.insert_image(frame.image_format_1080(tempim, A), tempim)
         tempim2 = Image.open('workspace/frames/' + dire)
-        frame.make_temp(frames,tempim2)
+        frame.make_temp(frames, tempim2)
         #for i in range(frames):
         #    tempim2.save('frames_temp/' + str(i+1) + '.png')
         video.frames_to_vid(index)
@@ -44,7 +40,7 @@ def make_vid_clip(image_name, clip):
         video.mp4_plus_wav(index)
         index += 1
     mp = frame.read_direct('workspace/mp4', '.mp4')
-    video.mp4_concatenation(mp,clip)
+    video.mp4_concatenation(mp, clip)
 
     audio.delete_audio(len(words))
     frame.delete_state_frames(len(points))

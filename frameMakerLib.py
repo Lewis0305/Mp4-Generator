@@ -34,7 +34,7 @@ def white_black_INFO(A,data):
         for n in a:
             if np.array_equal(n, [215, 218, 220, 255]): # That is the RGBT value for the background color
                 black = 0
-                if whiteline== 0:
+                if whiteline == 0:
                     whiteline = 1
                 elif whiteline == 5:
                     whiteline = -1
